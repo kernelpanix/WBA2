@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Anmeldungen>
+    <Gruppe gruppen_id="1" gruppenleiter= "1">
+        <Mitglied id="1" vorname="anna" nachname="bunto" email="ab@web.de" gebdatum="01.01.92" schlagzeug="vorhanden" anmerkungen=""/>
+        <Mitglied id="2" vorname="berta" nachname="cilianti" email="bc@web.de" gebdatum="02.02.92" schlagzeug="nicht vorhanden" anmekungen=""/>
+    </Gruppe>r
+</Anmeldungen>
+

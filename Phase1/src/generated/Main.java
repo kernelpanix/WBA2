@@ -1,4 +1,4 @@
-package packagee;
+package generated;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,9 +10,6 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import com.w3schools.KochbuchTyp;
-import com.w3schools.ZutatTyp;
-
 public class Main {
 
 	/**
@@ -21,18 +18,16 @@ public class Main {
 	public static void main(String[] args) throws JAXBException, FileNotFoundException{
 		// TODO Auto-generated method stub
 		// notwendige Objekte
-		JAXBContext jaxbContext = JAXBContext.newInstance("com.w3schools"); 
+		JAXBContext jaxbContext = JAXBContext.newInstance("generated"); 
 		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 		Scanner in = new Scanner(System.in);
-		List<String> kommentare;
 				
 		//Testdatensätze
 		File buch1 = new File ("xml/aufgabe3d-datensatz1.xml");
 		File buch2 = new File ("xml/aufgabe3d-datensatz2.xml");
 				
 		// Einlesen
-		KochbuchTyp chefkochbuch = (KochbuchTyp) ((javax.xml.bind.JAXBElement) unmarshaller.unmarshal(buch1)).getValue();
-		System.out.println(chefkochbuch.getRezept().get(0).name);
+		KochbuchTyp chefkochbuch = (KochbuchTyp) ((javax.xml.bind.JAXBElement) unmarshaller.unmarshal(buch1)).getValue();		
 		
 		//Menü
 		menue(in, chefkochbuch);
@@ -96,9 +91,9 @@ public class Main {
 		ObjectFactory neuer_kommi = new ObjectFactory();
 		neuer_kommi.createKommentar(kommi);
 		
-		//chefkochbuch.getRezept().get(0).
+		chefkochbuch.getRezept().get(0).getKommentar().add(kommi);
 		
-		
+		menue(in, chefkochbuch);
 	}
 
 }

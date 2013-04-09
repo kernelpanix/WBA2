@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kochbuch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/C:/Users/Ngoc-Anh/Dropbox/FH/4.%20Semester/WBA2/Phase1/aufgabe3d-schema.xsd">
+    <rezept id="1">
+        <rezeptname>Kakao-Kirsch Kuchen</rezeptname>
+        <kcal>385</kcal>
+        <portionen>1</portionen>
+        <schwierigkeit>mittel</schwierigkeit>
+        <kochBackzeit>
+            <stunde>1</stunde>
+            <minute>15</minute>
+        </kochBackzeit>      
+        <bilder></bilder>
+        <zutaten>
+            <zutat>
+                <zutatname>Eier</zutatname>
+                <menge>6</menge>
+                <einheit>Stck.</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>Öl</zutatname>
+                <menge>1</menge>
+                <einheit>Tasse</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>Mehl</zutatname>
+                <menge>2</menge>
+                <einheit>Tasse</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>Backpulver</zutatname>
+                <menge>1</menge>
+                <einheit>Pck.</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>Kakaopulver</zutatname>
+                <menge>1</menge>
+                <einheit>Tasse</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>Mineralwasser</zutatname>
+                <menge>1</menge>
+                <einheit>Tasse</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>gemahlene Nüsse</zutatname>
+                <menge>1</menge>
+                <einheit>Pck.</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>Kirschen</zutatname>
+                <menge>1</menge>
+                <einheit>Tasse</einheit>
+            </zutat>
+        </zutaten>
+        <schritte>
+            <schritt>Alle Zutaten bis auf die Kirschen miteinander in einer großen Schüssel zu einem glatten Teig verrühren. </schritt>
+            <schritt>Auf einem Backblech (Fettpfanne) Backpapier auslegen und darauf den Teig verstreichen.</schritt>
+            <schritt>Die gut abgetropften Kirschen auf dem Teig verteilen.</schritt>
+            <schritt>Schließlich im Backofen bei 200° C ca. 45 Minuten backen (Stäbchenprobe machen).</schritt>
+        </schritte>
+        
+        <kommentare>
+            <kommentar>
+                <nachricht>Einfach und schnell zu machen!</nachricht>
+                <user>Schlmmerchen</user>
+                <uhrzeit>2002-05-30T09:00:00</uhrzeit>
+            </kommentar>
+        </kommentare>
+    </rezept>
+    
+    <rezept id="2">
+        <rezeptname>Hugo</rezeptname>
+        <portionen>1</portionen>
+        <schwierigkeit>leicht</schwierigkeit>
+        <kochBackzeit>
+            <minute>5</minute>
+        </kochBackzeit>
+        <bilder>
+            <bild>
+                <bild_url>http://static.chefkoch-cdn.de/ck.de/rezepte/109/109667/368183-960x720-hugo.jpg</bild_url>
+                <user>pearline</user>
+            </bild>
+            <bild>
+                <bild_url>http://autoimg.kochbar.de/kbrezept/332084_286186/400x266/rezept-hugo-bild-nr-2.jpg</bild_url>
+                <user>alex</user>
+            </bild>
+        </bilder>
+        <zutaten>
+            <zutat>
+                <zutatname>Prosecco</zutatname>
+                <menge>1</menge>
+                <einheit>Tasse</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>Limette</zutatname>
+                <menge>0.5</menge>
+                <einheit>Stck.</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>Minze</zutatname>
+                <menge>2</menge>
+                <einheit>Stck.</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>Sirup</zutatname>
+                <menge>1</menge>
+                <einheit>nach_Belieben</einheit>
+            </zutat>
+            <zutat>
+                <zutatname>Eiswürfel</zutatname>
+                <menge>3</menge>
+                <einheit>nach_Belieben</einheit>
+            </zutat>
+        </zutaten>
+        <schritte>
+            <schritt>Die Limettenhälfte in 4 Stücke schneiden.</schritt>
+            <schritt>Den Saft der Limette in den Prosecco drücken.</schritt>
+            <schritt>Die Stücke daraufhin auch in den Prosecco geben.</schritt>
+            <schritt>Minze, Eiswürfel und Holunderblütensirup nach Belieben zugeben.</schritt>
+        </schritte>
+        <kommentare></kommentare>
+    </rezept>
+</kochbuch>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chefkochbuch>
     <rezept id="1" stunde="1" minuten="0" schwierigkeit="mittel" kcal="295" portionen="16">
+        <bilder>
+            <bild url="http://static.chefkoch-cdn.de/ck.de/rezepte/2/2464/33239-960x720-lenchen-s-schokoladenkuchen1.jpg" user="user1"/>
+            <bild url="http://static.chefkoch-cdn.de/ck.de/rezepte/2/2464/54425-960x720-lenchen-s-schokoladenkuchen2.jpg" user="user2"/>
+        </bilder>
         <zutaten>	
            <zutat name="Butter" menge="200" einheit="g" />
            <zutat name="Zucker" menge="200" einheit="g" />
@@ -20,5 +24,9 @@
            <schritt>In eine gut gefettete Form geben. </schritt>
            <schritt>Bei 180 Grad 40-50 Minuten backen.</schritt>
         </schritte>
+        <kommentare>
+            <kommentar user="user1" datum="07.08.2002" uhrzeit="13:49">Schönes Rezept!</kommentar>
+            <kommentar user="user2" datum="05.08.2002" uhrzeit="10:41">Gefällt mir sehr gut.</kommentar>
+        </kommentare>
     </rezept>
 </chefkochbuch>

@@ -32,38 +32,35 @@ public class Main {
 						
 		// Einlesen / unmarshalling
 		Kochbuch chefkochbuch = (Kochbuch) unmarshaller.unmarshal(new File ("xml/aufgabe3d-data.xml"));		
-		//Kochbuch chefkochbuch = (Kochbuch) ((javax.xml.bind.JAXBElement) unmarshaller.unmarshal(new File ("xml/aufgabe3d-data.xml"))).getValue();		
 				
-		// marshalling
-		 Marshaller m = jaxbContext.createMarshaller();
-		 m.marshal(chefkochbuch, new File ("xml/aufgabe3d-data.xml"));
+		 
+//		 Marshaller m = context.createMarshaller();
+//         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//         m.marshal(new ObjectFactory().createRezepte(rezepte), new File(filename));
 		
 		//Menü
-		menue(in, chefkochbuch);
-
+		menue(in, chefkochbuch, jaxbContext);
 	}
 	
-	
-
-	public static void menue(Scanner in, Kochbuch chefkochbuch)
+	public static void menue(Scanner in, Kochbuch chefkochbuch, JAXBContext jaxbContext) throws JAXBException
 	{
 
 		int anzahl_rezepte = chefkochbuch.getRezept().size();
-		System.out.println("Dieses Buch enthält " + anzahl_rezepte + " Rezepte.");
-		System.out.println("\nWählen Sie eine Option:\n\n1 - Rezept Ausgeben\n2 - Kommentar zum Rezept hinzufügen\n3 - Kochbuch schließen\n\nAuswahl:  ");
+		System.out.println("\nDieses Buch enthält " + anzahl_rezepte + " Rezepte.");
+		System.out.print("\nWählen Sie eine Option:\n\n1 - Rezept Ausgeben\n2 - Kommentar zum Rezept hinzufügen\n3 - Kochbuch schließen\n\nAuswahl:  ");
 		int auswahl_option = in.nextInt();
 		
 		if (auswahl_option == 3)
 			System.out.println("\n\nLassen Sie es sich schmecken! Bis bald.");
 		else{
 			
-			System.out.println("\nWählen Sie ein Rezept: ");
+			System.out.print("Wählen Sie ein Rezept: ");
 			int auswahl_rezept = in.nextInt();
 			
-			if(auswahl_rezept>anzahl_rezepte)
+			if( (auswahl_rezept>anzahl_rezepte) || (auswahl_rezept<1))
 			{
-				System.out.println("Dieses Rezept existiert nicht. Geben Sie eine Zahl zwischen 1 und " + anzahl_rezepte + " sein." );
-				menue(in, chefkochbuch);
+				System.out.println("Dieses Rezept existiert nicht. Geben Sie eine Zahl zwischen 1 und " + anzahl_rezepte + " ein." );
+				menue(in, chefkochbuch, jaxbContext);
 			}
 			
 			else{
@@ -75,24 +72,23 @@ public class Main {
 						rezept = chefkochbuch.getRezept().get(i);
 				}
 				
+				System.out.println("\n\n____________________________________________________________");
+
 				switch(auswahl_option)
 				{
 					case 1:
-						ausgabe(rezept, in, chefkochbuch); break;
+						ausgabe(rezept, in, chefkochbuch, jaxbContext); break;
 					case 2:
-						kommentar(rezept, in, chefkochbuch); break;
+						kommentar(rezept, in, chefkochbuch, jaxbContext); break;
 					default:
 						System.out.println("Für die Auswahl der Option ist nur eine Eingabe von 1, 2 oder 3 erlaubt!");
-						menue(in, chefkochbuch);
+						menue(in, chefkochbuch, jaxbContext);
 				}
-			}
-			
+			}			
 		}
-		
-		
 	}
 	
-	public static void ausgabe(Rezept rezept, Scanner in, Kochbuch chefkochbuch)
+	public static void ausgabe(Rezept rezept, Scanner in, Kochbuch chefkochbuch, JAXBContext jaxbContext) throws JAXBException
 	{
 		// Allgemeine Daten zum Rezept
 		System.out.println("\n\n"+ "----" + rezept.rezeptname + "----");
@@ -136,55 +132,52 @@ public class Main {
 				for (int j = 0; j<kommis.size(); j++)
 				{
 					System.out.println("\n" + kommis.get(j).nachricht);
-					System.out.println("Von " + kommis.get(j).user + " am " + kommis.get(j).uhrzeit);
+					System.out.println("- Von " + kommis.get(j).user + " am " + kommis.get(j).uhrzeit);
 				}
 			}
-				
+		
+		
 		System.out.println("\n\n____________________________________________________________");
-		menue(in, chefkochbuch);
+		menue(in, chefkochbuch, jaxbContext);
 	}
 	
-	public static void kommentar(Rezept rezept, Scanner in, Kochbuch chefkochbuch)
+	public static void kommentar(Rezept rezept, Scanner in, Kochbuch chefkochbuch, JAXBContext jaxbContext) throws JAXBException
 	{
-		System.out.println("\n\nFügen Sie einen Kommentar hinzu: ");
+		
+		System.out.print("\n\nIhr username: ");
+		String username = in.next();
 		in.nextLine();
+		System.out.println("Fügen Sie einen Kommentar hinzu: ");
 		String kommi = in.nextLine();
-		System.out.println("Ihr username: ");
-		in.nextLine();
-		String username = in.nextLine();
-	    
-		// Datum erstellen
-		DatatypeFactory dates = null;
-		try {
-			dates = DatatypeFactory.newInstance();
-		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    int un = DatatypeConstants.FIELD_UNDEFINED;
-	    XMLGregorianCalendar zeit = dates.newXMLGregorianCalendarDate(2006, 1, 31, un);
+
+
+		Kommentare.Kommentar K = new Kommentare.Kommentar();
+		K.setNachricht(kommi);
+		K.setUser(username);
 		
-		ObjectFactory neuer_kommi = new ObjectFactory();
-		neuer_kommi.createKommentare().kommentar.add(new Kommentar());
+		GregorianCalendar kalender = new GregorianCalendar();
+		kalender.setTime(new Date());
+        XMLGregorianCalendar zeit;
+        try {
+        	zeit = DatatypeFactory.newInstance().newXMLGregorianCalendar(kalender);
+            K.setUhrzeit(zeit);
+        } catch (DatatypeConfigurationException e) {}
 		
-		rezept.kommentare.kommentar.get(rezept.kommentare.kommentar.size()-1).nachricht = kommi;
-		rezept.kommentare.kommentar.get(rezept.kommentare.kommentar.size()-1).user = username;
-		rezept.kommentare.kommentar.get(rezept.kommentare.kommentar.size()-1).uhrzeit = zeit;
+		rezept.kommentare.kommentar.add(K);
+
 		
 		//SimpleDateFormat formatter = new SimpleDateFormat ("yyyy.MM.dd 'at' HH:mm:ss ");
-		
-		
 		// System.out.println("Zeit und Datum : " + formatter.format(currentTime));
-
-
-        
         // System.out.println("\tGeschrieben am:\t" + new SimpleDateFormat("dd.MM.yy HH:mm:ss").format(geschrieben_am));
 		
+
 		System.out.println("\n\n____________________________________________________________");
 		
+		// marshalling
+		Marshaller marshaller = jaxbContext.createMarshaller();
+		marshaller.marshal(chefkochbuch, new File ("xml/aufgabe3d-data.xml"));
 		
-		
-		menue(in, chefkochbuch);
+		menue(in, chefkochbuch, jaxbContext);
 	}
 
 

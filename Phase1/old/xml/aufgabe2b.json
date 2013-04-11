@@ -1,0 +1,22 @@
+{
+	"id":1,
+	"Gruppenleiter":1,
+    "Mitglieder": [{
+   	    "id": 1,
+       "vorname":"anna",
+       "name":"bunto",
+       "gebdatum":"01.01.92",
+       "email":"ab@web.de",
+       "schlagzeug":true,
+       "anmerkungen":"",
+    },
+    {
+    	"id": 2,
+        "vorname":"berta",
+        "name":"cilanti",
+        "gebdatum":"02.02.92",
+        "email":"bc@web.de",
+        "schlagzeug":false,
+        "anmerkungen":""
+    }]
+}

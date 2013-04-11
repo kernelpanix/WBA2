@@ -1,0 +1,77 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:c="http://www.w3schools.com"
+		targetNamespace="http://www.w3schools.com"
+		elementFormDefault="qualified">
+
+	<xsd:element name="chefkochbuch" type="c:kochbuch_typ"/>
+	
+	<xsd:element name="rezept">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="c:zutaten"/>
+				<xsd:element ref="c:schritte"/>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:positiveInteger" use="required"/>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="stunde" type="xsd:positiveInteger" use="optional"/>
+			<xsd:attribute name="minuten" type="c:min" use="optional"/>
+			<xsd:attribute name="schwierigkeit" type="c:stufe" use="optional"/>
+			<xsd:attribute name="kcal" type="xsd:positiveInteger" use="optional"/>
+			<xsd:attribute name="portionen" type="xsd:positiveInteger" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="zutaten" type="c:zutaten_typ"/>
+	<xsd:element name="schritte" type="c:schritte_typ"/>
+	<xsd:element name="zutat" type="c:zutat_typ" />
+	<xsd:element name="schritt" type="xsd:string"/>
+	
+	<xsd:complexType name="kochbuch_typ">
+		<xsd:sequence>
+			<xsd:element ref="c:rezept" maxOccurs="unbounded"/>	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="zutaten_typ">
+		<xsd:sequence>
+			<xsd:element ref="c:zutat" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="zutat_typ">
+		<xsd:attribute name="menge" type="xsd:positiveInteger" use="required"/>
+		<xsd:attribute name="einheit" type="c:unit" use="required"/>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="schritte_typ">
+		<xsd:sequence>
+			<xsd:element ref="c:schritt" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="min">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="59"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="stufe">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="leicht|mittel|schwer"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="unit">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="g"/>
+			<xsd:enumeration value="TL"/>
+			<xsd:enumeration value="EL"/>
+			<xsd:enumeration value="Pck."/>
+			<xsd:enumeration value="Stk."/>
+			<xsd:enumeration value="Tasse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

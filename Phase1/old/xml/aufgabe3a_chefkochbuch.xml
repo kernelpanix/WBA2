@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chefkochbuch>
+    <rezept id="1" stunde="1" minuten="0" schwierigkeit="mittel" kcal="295" portionen="16">
+        <zutaten>	
+           <zutat name="Butter" menge="200" einheit="g" />
+           <zutat name="Zucker" menge="200" einheit="g" />
+           <zutat name="Schokolade" menge="200" einheit="g" />
+           <zutat name="Mehl" menge="120" einheit="g" />
+           <zutat name="Backpulver" menge="0.5" einheit="TL" />
+           <zutat name="Vanillezucker" menge="1" einheit="Pck." />
+           <zutat name="Eier" menge="4" einheit="Stk." />
+        </zutaten>
+        <schritte>
+           <schritt>Butter und Schokolade im Wasserbad schmelzen. </schritt>
+           <schritt>Eier trennen. </schritt>
+           <schritt>Eiwei steif schlagen. </schritt>
+           <schritt>Eigelbe, Zucker und Vanillezucker verrühren.</schritt>
+           <schritt>Geschmolzene Butter-Schokomasse hinzufgen und mischen.</schritt>
+           <schritt>Mehl mit dem Backpulver in die Masse sieben und zum Schluss die steifen Eiweiß vorsichtig unterheben.</schritt>
+           <schritt>In eine gut gefettete Form geben. </schritt>
+           <schritt>Bei 180 Grad 40-50 Minuten backen.</schritt>
+        </schritte>
+    </rezept>
+</chefkochbuch>
